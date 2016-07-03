@@ -1,0 +1,35 @@
+---
+title: "Finding Diamonds"
+runtime: shiny
+output: ioslides_presentation
+---
+
+## Introduction
+
+As seen in the plot below, diamonds are quite expensive for a variety of reasons. 
+
+```{r, echo=FALSE}
+library(ggplot2)
+p <- ggplot(diamonds, aes(x=carat, y=price)) + xlab("Carats") + ylab("Price")
+p + geom_jitter(alpha=0.5, aes(color=cut)) + scale_color_brewer("Quality of Cut", palette="Set1")
+```
+
+## Why this app?
+
+There is probably no good reason for you to buy a diamond. However, if you do want to purchase one, it's a good idea to have a budget and realistic expectations. 
+
+This app is designed to help you find a diamond that is within budget and meets your criteria, based on data from the diamonds dataset in ggplot2. Just enter your maximum budget and ranges for your desired weight (in carats), length, width, and depth in mm. The table will show you all of the diamonds that meet your criteria.
+        
+## Available criteria
+
+```{r}
+dim(diamonds)
+```
+
+The diamonds dataset is quite large, as you can see above. The app uses sliders to allow the user to input a range for all criteria (carats, length in mm, weight in mm, and depth in mm), as well as allowing users to enter their maximum budget. Users can reorder by any column and search within the data. 
+
+## More information
+
+- The application is available at: https://cb2016.shinyapps.io/dataproject/ 
+- server.R and ui.R code is available at: https://github.com/cjbakker/shiny
+
